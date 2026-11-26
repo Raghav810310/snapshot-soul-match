@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Use TanStack Start file routes and authenticated server functions for account-owned operations; the framework deploys to a Worker, not a separate Edge Function runtime.
+- Keep each conversation at a route-derived ID and persist its messages in Cloud with owner-scoped RLS; stable URLs prevent history from bleeding across conversations.
+- Stream AI through the Gateway SDK inside the authenticated chat HTTP handler, adapting native events to UIMessage text parts; secrets and inference stay server-side.
+- Compose transcripts, Markdown, loading, and the composer with installed AI Elements primitives; this keeps streaming content and input behavior consistent.
+- Save completed assistant responses only after successful stream completion; partial or failed output must never be represented as a saved completed answer.
